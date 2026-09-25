@@ -1,6 +1,7 @@
 package com.example.tickets.web;
 
 import com.example.tickets.domain.exception.InvalidStatusTransitionException;
+import com.example.tickets.domain.exception.InvalidTicketFieldException;
 import com.example.tickets.domain.exception.TicketNotFoundException;
 import com.example.tickets.web.dto.ApiErrorResponse;
 import org.springframework.http.HttpStatus;
@@ -40,6 +41,19 @@ public class GlobalExceptionHandler {
                         "Not Found",
                         ex.getMessage(),
                         List.of()
+                )
+        );
+    }
+
+    @ExceptionHandler(InvalidTicketFieldException.class)
+    public ResponseEntity<ApiErrorResponse> handleInvalidField(InvalidTicketFieldException ex) {
+        return ResponseEntity.badRequest().body(
+                new ApiErrorResponse(
+                        Instant.now(),
+                        HttpStatus.BAD_REQUEST.value(),
+                        "Bad Request",
+                        "Validation failed",
+                        List.of(new ApiErrorResponse.FieldErrorDto(ex.getField(), ex.getMessage()))
                 )
         );
     }

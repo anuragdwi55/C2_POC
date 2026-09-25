@@ -3,6 +3,7 @@ package com.example.tickets.service;
 import com.example.tickets.domain.Priority;
 import com.example.tickets.domain.StatusTransitionRules;
 import com.example.tickets.domain.TicketStatus;
+import com.example.tickets.domain.exception.InvalidTicketFieldException;
 import com.example.tickets.domain.exception.TicketNotFoundException;
 import com.example.tickets.persistence.CommentEntity;
 import com.example.tickets.persistence.Ticket;
@@ -58,9 +59,15 @@ public class TicketService {
     public Ticket update(UUID id, String title, String description, Priority priority, String assignee) {
         Ticket ticket = getById(id);
         if (title != null) {
+            if (title.isBlank()) {
+                throw new InvalidTicketFieldException("title", "must not be blank");
+            }
             ticket.setTitle(title);
         }
         if (description != null) {
+            if (description.isBlank()) {
+                throw new InvalidTicketFieldException("description", "must not be blank");
+            }
             ticket.setDescription(description);
         }
         if (priority != null) {
