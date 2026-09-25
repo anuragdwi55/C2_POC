@@ -1,0 +1,10 @@
+---
+description: Java Spring Boot standards for ticket backend
+globs: backend/**/*.java
+alwaysApply: false
+---
+
+# Backend conventions
+
+Follow `rules/java-springboot.md` and `spec/state-machine.md`.
+Enforce status changes only through `TicketService.transitionStatus`.

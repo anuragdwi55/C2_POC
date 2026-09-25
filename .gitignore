@@ -1,0 +1,23 @@
+# Secrets
+.env
+.env.local
+*.pem
+
+# Java
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+backend/data/
+
+# Node
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+!.vscode/extensions.json
+
+# OS
+.DS_Store
