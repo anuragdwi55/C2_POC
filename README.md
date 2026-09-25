@@ -8,6 +8,12 @@ Requirement → `spec/` → `spec/plan-tasks.md` → implementation → tests �
 
 Prompt history: `docs/prompt-history.md`, `.specstory/history/`
 
+## Manual acceptance checklist
+
+1. Create a ticket in the UI, restart the backend, confirm it still appears in the list (file H2 under `backend/data/`).
+2. Move a ticket through OPEN → IN_PROGRESS → RESOLVED → CLOSED.
+3. Attempt an illegal transition (e.g. from CLOSED) and confirm the UI banner shows the API message.
+
 ## Run locally
 
 ### Backend (port 8080)

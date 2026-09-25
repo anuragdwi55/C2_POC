@@ -8,6 +8,12 @@ Recorded prompts for spec-driven development (see also `.specstory/history/`).
 
 **Outcome:** Created spec set before implementation; avoided "build complete application" in one shot.
 
+## 2026-09-25 — Incremental commits
+
+**Prompt (summary):** Add 2–3 more commits for a multi-commit history; push to `git@github.com:anuragdwi55/C2_POC.git`.
+
+**Outcome:** Split follow-up work into validation hardening, integration test for partial PATCH, and docs/spec updates.
+
 ---
 
 ## AI review log (mistakes / rejected suggestions)
@@ -21,5 +27,6 @@ Engineering review of AI output — do not accept blindly.
 | 3 | Store comments as JSON column on ticket | Harder to query; violates normalized model in spec | Separate `Comment` entity with FK |
 | 4 | Frontend: enable all status dropdown values | Users could request illegal transitions | Show only legal next states from current status |
 | 5 | Use in-memory H2 without file URL | Data lost on restart; fails NFR-06 | `jdbc:h2:file:./data/tickets` for dev |
+| 6 | Put `@NotBlank` on PATCH DTO fields | Breaks partial updates (assignee-only PATCH) | Validate blank strings in `TicketService` when a field is present |
 
 *(Add new rows as you iterate with Copilot/Cursor.)*

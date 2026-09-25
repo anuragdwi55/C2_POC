@@ -31,7 +31,7 @@ Response `200`: ticket with `comments[]`. `404` if missing.
 
 ### PATCH `/tickets/{id}`
 
-Partial update: `title`, `description`, `priority`, `assignee` (all optional).
+Partial update: `title`, `description`, `priority`, `assignee` (all optional). Omitted fields are unchanged. Blank `title` or `description` when sent returns `400` with `fieldErrors`.
 
 Response `200`: updated ticket.
 
